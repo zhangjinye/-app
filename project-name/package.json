@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "better-scroll": "^1.12.6",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
     "vant": "^1.1.15",

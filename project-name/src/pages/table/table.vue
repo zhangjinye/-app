@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- 导航 -->
         <nav>
             <div class="nav-row">
                 <div class="nav-content">
@@ -12,34 +13,79 @@
                 </div>
             </div>
         </nav>
-        <div class="content-warp">
+        <!-- 房台信息 -->
+        <div class="content-warp" ref="deskContent">
             <div class="table-nav">
                 <van-tabs :swipe-threshold='4' :line-width="30">
                     <van-tab v-for="index in 8" :title="'区域' + index" :key="index"></van-tab>
                 </van-tabs>
             </div>
-            <desk-list></desk-list>
+            <desk-list @onPersonNumber="handClickPersonNumber"></desk-list>
         </div>
         
+        <!-- 输入人数 -->
+        <van-dialog
+        v-model="showNumberdialog"
+        show-cancel-button
+        :before-close="beforeClose"
+        >
+        <van-row class="dialog-title">
+            就餐人数
+        </van-row>
+        <van-field
+            v-model="user_number"
+            label="就餐人数"
+            type="number"
+            placeholder="请输入就餐人数"
+        />
+        </van-dialog>
+
     </div>
 </template>
 <script>
 import deskList from '@/components/deskList/list';
+import {Toast} from 'vant';
 export default {
     data(){
         return {
             name: '房台',
-            fixed: true
+            fixed: true,
+            showNumberdialog: false,
+            user_number: ""
         }
     },
     components:{
         deskList
     },
+    methods:{
+        //输入就餐人数
+        handClickPersonNumber(){
+            this.showNumberdialog = !this.showNumberdialog;
+        },
+
+        //关闭就餐人数框
+        beforeClose(action, done) {
+            if (action === 'confirm') {
+                Toast('点击了确定');
+                done();
+                this.$router.push('/foodList')
+            } else {
+                done();
+                Toast('点击了取消');
+            }
+        }
+
+        //
+    }
 }
 </script>
 <style lang="less">
     .text-center{
         text-align: center;
+    }
+    .dialog-title{
+        text-align: center;
+        padding: .266667rem;
     }
     .nav-row{
         height: 46px;
