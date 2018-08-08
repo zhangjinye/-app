@@ -1,30 +1,26 @@
 <template>
-    <div>
-        <div class="list-content" ref="menuListContent">
-            <van-badge-group :active-key="activeKey" >
-                <van-badge title="标签名称" @click="onClick" />
-                <van-badge title="标签名称" @click="onClick" info="8" />
-                <van-badge title="标签名称" @click="onClick" info="99" />
-                <van-badge title="标签名称" @click="onClick" info="199" />
-                <van-badge title="标签名称" @click="onClick" />
-                <van-badge title="标签名称" @click="onClick" info="8" />
-                <van-badge title="标签名称" @click="onClick" info="99" />
-                <van-badge title="标签名称" @click="onClick" info="199" />
-                <van-badge title="标签名称" @click="onClick" />
-                <van-badge title="标签名称" @click="onClick" info="8" />
-                <van-badge title="标签名称" @click="onClick" info="99" />
-                <van-badge title="标签名称" @click="onClick" info="199" />
-                <van-badge title="标签名称" @click="onClick" />
-                <van-badge title="标签名称" @click="onClick" info="8" />
-                <van-badge title="标签名称" @click="onClick" info="99" />
-                <van-badge title="标签名称" @click="onClick" info="199" />
-                <van-badge title="标签名称" @click="onClick" />
-                <van-badge title="标签名称" @click="onClick" info="8" />
-                <van-badge title="标签名称" @click="onClick" info="99" />
-                <van-badge title="标签名称" @click="onClick" info="199" />
-            </van-badge-group>
-        </div>
-        
+    <div class="list-content" ref="menuListContent">
+        <van-badge-group :active-key="activeKey" >
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+            <van-badge title="菜单" @click="onClick"/>
+        </van-badge-group>
     </div>
 </template>
 <script>
@@ -64,7 +60,9 @@ export default {
 }
 </script>
 <style lang="less">
-
+    .list-content{
+        height: 100%;
+    }
 </style>
 
 

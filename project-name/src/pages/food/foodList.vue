@@ -20,22 +20,28 @@
             </div>
         </nav>
         <!-- 菜品点菜 -->
-        <div class="food-content">
+        <div class="food-content" :class="showSearchFlag ? 'food-content-active': ''">
             <div class="menu-list">
                 <food-menu></food-menu>
             </div>
             <div class="food-list">
-
+                <foods-list></foods-list>
             </div>
         </div>
+        <!-- 底部导航 -->
+         <shop-cart></shop-cart>   
     </div>
 </template>
 <script>
 import foodMenu from '@/components/foodMenu/menuList';
+import foodsList from '@/components/foodsList/foodsList';
+import shopCart from '@/components/shopCart/cart';
 export default {
     //组件
     components:{
-        foodMenu
+        foodMenu,
+        foodsList,
+        shopCart
     },
 
     created() {
@@ -89,14 +95,22 @@ export default {
 .food-content{
     position: absolute;
     display: flex;
-    height: 100%;
     width: 100%;
     overflow: hidden;
+    top: 46px;
+    bottom: 50px;
     .menu-list{
         height: 100%;
         width: 85px;
-        padding-top: 46px;
     }
+    .food-list{
+        flex: 1;
+        height: 100%;
+        background-color: #fff;
+    }
+}
+.food-content-active{
+    top: 92px;
 }
 </style>
 
