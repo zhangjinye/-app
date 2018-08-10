@@ -1,7 +1,9 @@
+// 环境的切换
+
 export default {
     method: 'post',
     // 基础url前缀
-    baseURL: 'https://easy-mock.com/mock/5ad75e9f41d4d65f0e935be4/example',
+    baseURL: 'http://localhost:7957/',
     // 请求头信息
     headers: {
       'Content-Type':'application/json;charset=UTF-8'

@@ -15,17 +15,24 @@
                     show-action
                     placeholder="输入您想要查找的菜品哦~"
                     >
-                    <div slot="action" @click="searchProduct">搜索</div>
+                    <div slot="action" @click="searchFood">搜索</div>
                 </van-search>
             </div>
         </nav>
         <!-- 菜品点菜 -->
         <div class="food-content" :class="showSearchFlag ? 'food-content-active': ''">
             <div class="menu-list">
-                <food-menu></food-menu>
+                <food-menu 
+                :foodMenuList="foodMenuList" 
+                v-if="foodMenuListFlag"
+                @onHandleClickMenu='readyMenu'>
+                </food-menu>
             </div>
             <div class="food-list">
-                <foods-list></foods-list>
+                <foods-list 
+                :foodList='foodList' 
+                v-if="foodListFlag">
+                </foods-list>
             </div>
         </div>
         <!-- 底部导航 -->
@@ -44,19 +51,101 @@ export default {
         shopCart
     },
 
-    created() {
-       
-    },
-
     data(){
         return {
             name:'',
             showSearchFlag:false,
-            searchTextValue:''
+            searchTextValue:'',
+            key:'',
+            tableInfo: Object,//当前房台信息
+            foodMenuList: Array,//菜单列表
+            foodMenuListFlag: false,
+            foodList: Array,
+            foodListFlag: false
         }
     },
 
+    created() {
+        let key = this.$store.state.key;
+        let tableInfo = this.$store.tableInfo;
+        this.key = key;
+        this.tableInfo = tableInfo;
+        this.getFirstCategory();
+    },
+
     methods:{
+        //监听点击菜单分类
+        readyMenu(categoryId){
+            this.getProductPcCashierListy(categoryId,"");
+        },
+
+        //搜索菜品
+        searchFood(){
+            const that = this;
+            let searchTextValue = that.searchTextValue;
+            if(searchTextValue != '' && searchTextValue != undefined && searchTextValue != null){
+                this.getProductPcCashierListy('',searchTextValue);
+            }
+            else{
+                 that.$toast("输入您想要查找的菜品哦~");
+            }
+        },
+
+        //读取菜单
+        getFirstCategory(){
+            const that = this;
+            const key = that.key;
+            let params = {
+                key: key
+            }
+            that.$api.getFirstCategory(params).then(result =>{
+                if(result && result.succeed){
+                    if(result.values && Array.isArray(result.values)){
+                        that.foodMenuList = result.values;
+                        that.foodMenuListFlag = true;
+                        that.getProductPcCashierListy(result.values[0].productcategory_id);
+                    }
+                    else{
+                        that.foodMenuList = [];
+                        that.foodMenuListFlag = false;
+                    }
+                }
+                else{
+                    that.$toast("获取分类失败!");
+                }
+            })
+        },
+
+        //读取菜品
+        getProductPcCashierListy(categoryId,name){
+            const that = this;
+            let params = {
+                key: that.key,
+                category: categoryId,
+                name: name,
+                pageIndex: 1,
+                pageSize: 100
+            }
+            that.$api.getProductPcCashierList(params).then(result =>{
+                if(result && result.succeed){
+                    let foodList = result.values.list;
+                    if(foodList && Array.isArray(foodList)){
+                        foodList.forEach(item =>{
+                            item.cartNumber = 0;
+                            item.sv_p_images = JSON.parse(item.sv_p_images);
+
+                        });
+                        that.foodList = foodList;
+                        that.foodListFlag = true;
+                    }
+                    else{
+                        that.foodList = [];
+                        that.foodListFlag = false;
+                    }
+                }
+            })
+        },
+
         //返回
         onClickLeft() {
             let that = this;
@@ -68,7 +157,7 @@ export default {
         },
         //搜索菜品
         searchProduct(){
-
+            
         }
     }
 }

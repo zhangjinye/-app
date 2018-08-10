@@ -1,31 +1,16 @@
 <template>
     <div class="list-content" ref="menuListContent">
         <van-badge-group :active-key="activeKey" >
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
-            <van-badge title="菜单" @click="onClick"/>
+            <van-badge v-for="(item,index) in foodMenuList" :key="item.productcategory_id" :title="item.sv_pc_name" @click="handleClickCategoy(item.productcategory_id,item.producttype_id,index)"/>
         </van-badge-group>
     </div>
 </template>
 <script>
 import BScroll from 'better-scroll';
 export default {
+    props:{
+        foodMenuList: Array
+    },
     data(){
         return {
             activeKey: 0
@@ -39,8 +24,9 @@ export default {
         })
     },
     methods: {
-        onClick(key) {
-            this.activeKey = key;
+        handleClickCategoy(productcategory_id,producttype_id,index) {
+            this.activeKey = index;
+            this.$emit('onHandleClickMenu',productcategory_id);
         },
         //初始化菜单列表BScroll
         _menuListBScroll(){

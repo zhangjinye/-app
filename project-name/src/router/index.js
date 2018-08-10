@@ -21,7 +21,8 @@ export default new Router({
     {
       path: '/table',
       name: '房台',
-      component: table
+      component: table,
+      props: true
     },
     {
       path: '/foodList',

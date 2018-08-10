@@ -2,31 +2,40 @@
     <div class="foods-list-content" ref="foodsContent">
         <ul>
             <!-- <li v-for="index in 10" :key="index"> -->
-            <li>
-                <img src="../../images/001.jpg" alt="" class="food-icon">
+            <li v-for="(item,index) in foodList" :key="item.product_id">
+                <template v-if="item.sv_p_images && item.sv_p_images[0]">
+                    <img :src="img_url+item.sv_p_images[0].code" :lazy='img_url+item.sv_p_images[0].code' alt="" class="food-icon">
+                </template>
+                <template v-else>
+                    <img src="../../images/foodimg.png" alt="" class="food-icon">
+                </template>
                 <div class="content">
-                    <div class="food-name">美味小吃美味小吃</div>
-                    <div class="food-salesinfo">销量：100</div>
+                    <div class="food-name">{{item.sv_p_name}}</div>
+                    <div class="food-salesinfo">{{item.sv_is_select && item.sv_select_remaining > 0 ? `剩余量：${item.sv_select_remaining}${item.sv_p_unit}`:''}}</div>
                     <div class="food-price">
-                        <span>¥5.00</span>
-                        <span class="unit-price">¥3.00</span>
+                        <!-- 区分会员价 -->
+                        <!-- <template v-if="item.sv_p_memberprice > 0">
+                            <span>¥{{item.sv_p_memberprice}}</span>
+                            <span class="unit-price">¥{{item.sv_p_unitprice}}</span>
+                        </template>
+                        <template v-else>
+                            <span>¥{{item.sv_p_unitprice}}</span>
+                        </template> -->
+                        <!-- 区分会员价 -->
+                        <span>¥{{item.sv_p_unitprice}}</span>
                     </div>
                 </div>
-                <cart-control></cart-control>
-            </li>
-            <li>
-                <img src="../../images/001.jpg" alt="" class="food-icon">
-                <div class="content">
-                    <div class="food-name">美味小吃美味小吃</div>
-                    <div class="food-salesinfo">销量：100</div>
-                    <div class="food-price">
-                        <span>¥5.00</span>
-                        <span class="unit-price">¥3.00</span>
+                <template v-if="item.sv_is_select === true && item.sv_select_remaining === 0">
+                    <div class="cartcontrol">
+                        已售馨
                     </div>
-                </div>
-                <div class="cartcontrol">
+                </template>
+                <template v-else>
+                    <cart-control :index="index" :cartNumber='item.cartNumber'></cart-control>
+                </template>
+                <!-- <div class="cartcontrol">
                     <div class="cart-spec">选规格</div>
-                </div>
+                </div> -->
             </li>
         </ul>
     </div>
@@ -35,12 +44,17 @@
 import BScroll from 'better-scroll';
 import cartControl from '@/components/cartControl/cartControl';
 export default {
+    props:{
+        foodList: Array
+    },
+
     components: {
         cartControl
     },
     data(){
         return {
-            activeKey: 0
+            activeKey: 0,
+            img_url: 'http://res.decerp.cc'
         }
     },
     created() {
@@ -48,11 +62,22 @@ export default {
             setTimeout(() =>{
                 this._menuListBScroll();
             },20)
-        })
+        });
+    },
+    watch:{
+        //监听菜品列表的变化，从而重置 BScroll 的初始化
+        foodList(){
+            this.$nextTick(()=>{
+                setTimeout(() =>{
+                    this._menuListBScroll();
+                },20)
+            });
+        }
     },
     methods: {
         onClick(key) {
             this.activeKey = key;
+
         },
         //初始化菜单列表BScroll
         _menuListBScroll(){

@@ -1,14 +1,23 @@
 <template>
     <div class="cartcontrol">
-        <span class="cart-decrease cart-button"></span>
-        <span class="cart-count">1</span>
-        <span class="cart-add cart-button"></span>
+        <span class="cart-add cart-button" @click="addFoodToCart(index)"></span>
+        <span v-show="cartNumber > 0" class="cart-count">1</span>
+        <span v-show="cartNumber > 0" class="cart-decrease cart-button"></span>
     </div>
 </template>
 <script>
 export default {
+    props:{
+        cartNumber: Number,
+        index: Number
+    },
     data(){
         return {
+            
+        }
+    },
+    methods: {
+        addFoodToCart(index){
             
         }
     }
@@ -22,6 +31,7 @@ export default {
         bottom: .266667rem;
         right: .266667rem;
         display: flex;
+        flex-direction: row-reverse;
         .cart-button{
             display: inline-block;
             width: .8rem;
