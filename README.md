@@ -12,36 +12,17 @@ npm install
 npm run dev
 # 效果演示
 <html>
-<head>
-    <style  type="text/css">
-        .images-content{
-            overflow: hidden;
-        }
-        .images-content .list-content{
-            list-style: none;
-        }
-        .images-content .list-item{
-            float: left;
-            max-width: 375px;
-        }
-    </style>
-</head>
-
 <div>
     <img src="http://m.decerp.cn/indeximg/vuecatering.png" width=300 height=390 />
 </div>
 <h1>部分截图</h1>
 <div class="images-content">
-    <ul>
-        <li class="list-item">
-            <img src="http://m.decerp.cn/indeximg/new1.png" />
-        </li>
-        <li class="list-item">
-            <img src="http://m.decerp.cn/indeximg/new2.png" />
-        </li>
-        <li class="list-item">
-            <img src="http://m.decerp.cn/indeximg/new3.jpg"/>
-        </li>
-    </ul>
+<img width="365" src="http://m.decerp.cn/indeximg/new1.png" />
+<img width="365" src="http://m.decerp.cn/indeximg/new2.png" />
+<img width="365" src="http://m.decerp.cn/indeximg/new3.jpg"/>
 </div>
 </html>
+
+
+
+
