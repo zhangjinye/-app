@@ -11,8 +11,19 @@ npm install
 
 npm run dev
 # 效果演示
-![image](http://res.decerp.cc/UploadImg/57277483/ShopLogo/20180811084228863.png)
-# 部分截图
-![image](http://m.decerp.cn/indeximg/new1.png)
-![image](http://m.decerp.cn/indeximg/new2.png)
-![image](http://m.decerp.cn/indeximg/new3.jpg)
+<html>
+<div>
+    <img src="http://res.decerp.cc/UploadImg/57277483/ShopLogo/20180811084228863.png" width=300 height=390 />
+</div>
+<h1>部分截图</h1>
+<div>
+    <img src="http://m.decerp.cn/indeximg/new1.png" width=375 height=667 />
+</div>
+<div>
+    <img src="http://m.decerp.cn/indeximg/new1.png" width=375 height=667 />
+</div>
+<div>
+    <img src="http://m.decerp.cn/indeximg/new1.png" width=375 height=667 />
+</div>
+</html>
+
