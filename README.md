@@ -13,17 +13,16 @@ npm run dev
 # 效果演示
 <html>
 <div>
-    <img src="http://res.decerp.cc/UploadImg/57277483/ShopLogo/20180811084228863.png" width=300 height=390 />
+    <img src="http://m.decerp.cn/indeximg/vuecatering.png" width=300 height=390 />
 </div>
 <h1>部分截图</h1>
 <div>
     <img src="http://m.decerp.cn/indeximg/new1.png" width=375 height=667 />
 </div>
 <div>
-    <img src="http://m.decerp.cn/indeximg/new1.png" width=375 height=667 />
+    <img src="http://m.decerp.cn/indeximg/new2.png" width=375 height=667 />
 </div>
 <div>
-    <img src="http://m.decerp.cn/indeximg/new1.png" width=375 height=667 />
+    <img src="http://m.decerp.cn/indeximg/new3.jpg" width=375 height=667 />
 </div>
 </html>
-
