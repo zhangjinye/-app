@@ -17,9 +17,9 @@ npm run dev
 </div>
 <h1>部分截图</h1>
 <div class="images-content">
-<img width="365" src="http://m.decerp.cn/indeximg/new1.png" />
+<img width="365" style="margin-right: 20px;" src="http://m.decerp.cn/indeximg/new1.png" />
 <img width="365" src="http://m.decerp.cn/indeximg/new2.png" />
-<img width="365" src="http://m.decerp.cn/indeximg/new3.jpg"/>
+<img width="365" style="margin-right: 20px;" src="http://m.decerp.cn/indeximg/new3.jpg"/>
 </div>
 </html>
 
