@@ -27,7 +27,7 @@ export default {
 
     data(){
         return {
-            userName:'000028@003',
+            userName:'18942431851@001',
             passWord:'123456'
         }
     },
@@ -102,7 +102,7 @@ export default {
         height: 100%;
         background: #fff;
         .content{
-            padding-top: 3.466667rem;
+            padding-top: 30%;
         }
         .logo-title{
             max-width: 35%;
@@ -147,6 +147,7 @@ export default {
             color: #fff;
         }
     }
+
 </style>
 
 

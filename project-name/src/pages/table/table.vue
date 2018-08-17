@@ -5,7 +5,7 @@
             <div class="nav-row">
                 <div class="nav-content">
                     <div class="nav-let-bar">
-                        <template v-if="shopInfo.shopLogo != ''">
+                        <template v-if="shopInfo.shopLogo !== ''">
                             <van-icon name="wap-nav" />
                             <!-- <img :src="'http://res.decerp.cc'+shopInfo.shopLogo" class="photo-icon" alt=""> -->
                         </template>

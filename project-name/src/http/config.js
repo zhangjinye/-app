@@ -3,7 +3,8 @@
 export default {
     method: 'post',
     // 基础url前缀
-    baseURL: 'http://localhost:7957/',
+    //baseURL: 'http://localhost:7957/',
+    baseURL: 'http://wpf.decerp.cc/',
     // 请求头信息
     headers: {
       'Content-Type':'application/json;charset=UTF-8'

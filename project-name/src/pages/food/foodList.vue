@@ -83,7 +83,7 @@ export default {
         searchFood(){
             const that = this;
             let searchTextValue = that.searchTextValue;
-            if(searchTextValue != '' && searchTextValue != undefined && searchTextValue != null){
+            if(searchTextValue !== '' && searchTextValue !== undefined && searchTextValue !== null){
                 this.getProductPcCashierListy('',searchTextValue);
             }
             else{
